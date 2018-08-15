@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import entity.Class1;
 import entity.Class2;
+import utils.searchInfo;
 
 public class test {
 	public static void main(String[] args) {
@@ -18,12 +19,32 @@ public class test {
 		
 		SqlSessionFactory f=new SqlSessionFactoryBuilder().build(is);
 		SqlSession s=f.openSession();
-		List<Class2> user=s.selectList("dao.Class2_dao.select");
+		
+		Class1 a=new Class1();
+		
+		List<Class1> user=s.selectList("dao.Class1_dao.select",new searchInfo(" where name like '%%'"));
+		List<Class1> user1=s.selectList("dao.Class1_dao.select",new searchInfo(" where name like '%°à%'"));
+//		s.delete("del", 1);
+		
+		
+//		user.get(1).setA("°¢°¢°¢°¢°¢°¢°¢");
+//		s.update("update",user.get(1));
+//		s.commit();
 		s.close();
-		for(Class2 t:user)
-			System.out.println(t.getName());
+//		SqlSession s1=f.openSession();
+//		List<Class1> user1=s1.selectList("dao.Class1_dao.select",new searchInfo(" where name like '%°à%'"));
+//		s.close();
+		for(Class1 t:user)
+			System.out.println(t.getA());
+		
+//		for(Class1 t:user1)
+//			System.out.println(t.getA());
+		
+		
+		
+		
+		
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

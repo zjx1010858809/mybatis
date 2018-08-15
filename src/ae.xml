@@ -9,6 +9,10 @@
 		<!-- 设置超时时间，它决定驱动等待一个数据库响应的时间  -->
 		<setting name="defaultStatementTimeout" value="25000" />
 	</settings>
+	
+	<typeAliases>
+		<typeAlias type="entity.Class1" alias="aaa"/>
+	</typeAliases>
 
 
 	<environments default="development">
@@ -25,7 +29,7 @@
 	</environments>
 	
 	<mappers>
-		<mapper class="dao.Class1_dao"/>
+		<mapper resource="dao/Class1_mapper.xml" />
 		<mapper class="dao.Class2_dao"/>
 	</mappers>
 

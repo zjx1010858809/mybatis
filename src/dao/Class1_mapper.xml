@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="dao.Class1_dao">
-<select id="select" resultType="entity.Class1">
-select * from cla
+
+<resultMap type="aaa" id="my">
+<id column="id" property="id"/>
+<result column="name" property="a"/>
+</resultMap>
+
+<cache eviction="LRU" flushInterval="100000" size="1024" readOnly="true"/>
+<select id="select" resultMap="my" parameterType="utils.searchInfo">
+select * from cla ${where}
 </select>
+
+<update id="update" parameterType="aaa">
+update cla set name=#{a} where id=#{id}
+</update>
+
+<delete id="del" parameterType="int">
+delete from cla where id=#{id}
+</delete>
+
 </mapper>
