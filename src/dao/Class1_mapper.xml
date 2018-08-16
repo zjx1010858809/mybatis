@@ -16,6 +16,10 @@ select * from cla ${where}
 update cla set name=#{a} where id=#{id}
 </update>
 
+<insert id="insert" parameterType="aaa">
+insert into cla (name) values(#{a})
+</insert>
+
 <delete id="del" parameterType="int">
 delete from cla where id=#{id}
 </delete>

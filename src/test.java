@@ -20,13 +20,13 @@ public class test {
 		SqlSessionFactory f=new SqlSessionFactoryBuilder().build(is);
 		SqlSession s=f.openSession();
 		
-		Class1 a=new Class1();
+//		Class1 a=new Class1();
 		
-		List<Class1> user=s.selectList("dao.Class1_dao.select",new searchInfo(" where name like '%%'"));
-		List<Class1> user1=s.selectList("dao.Class1_dao.select",new searchInfo(" where name like '%°à%'"));
+//		List<Class1> user=s.selectList("dao.Class1_dao.select",new searchInfo(" where name like '%%'"));
+//		List<Class1> user1=s.selectList("dao.Class1_dao.select",new searchInfo(" where name like '%°à%'"));
 //		s.delete("del", 1);
-		
-		
+		s.insert("dao.Class1_dao.insert", new entity.Class1("Å£"));
+		s.commit();
 //		user.get(1).setA("°¢°¢°¢°¢°¢°¢°¢");
 //		s.update("update",user.get(1));
 //		s.commit();
@@ -34,8 +34,8 @@ public class test {
 //		SqlSession s1=f.openSession();
 //		List<Class1> user1=s1.selectList("dao.Class1_dao.select",new searchInfo(" where name like '%°à%'"));
 //		s.close();
-		for(Class1 t:user)
-			System.out.println(t.getA());
+//		for(Class1 t:user)
+//			System.out.println(t.getA());
 		
 //		for(Class1 t:user1)
 //			System.out.println(t.getA());
